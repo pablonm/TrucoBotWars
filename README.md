@@ -4,7 +4,7 @@ TrucoBotWars es un juego hecho en Unity el cual se conecta a través de WebSocke
 
 ## Los bots
 
-Los bots deben implementar un servidor de WebSockets al cual se va a conectar Unity para enviar y recibir mensajes. Acá pueden encontrar un ejemplo de un bot que hace una jugada random entre las jugadas disponibles.
+Los bots deben implementar un servidor de WebSockets al cual se va a conectar Unity para enviar y recibir mensajes. [Acá](https://github.com/pablonm/TrucoBotWars-RandomBot) pueden encontrar un ejemplo de un bot que hace una jugada random entre las jugadas disponibles.
 
 ## Comunicación con los bots
 
@@ -88,7 +88,7 @@ Se envía desde el bot hacia el juego para indicar que se realiza una cierta jug
 ```
 {
     mensaje: "carta" 
-    carta: {
+    carta: { // Si no se juega una carta, este campo debe ir en null
         palo: "espada",
         numero: 3
     }

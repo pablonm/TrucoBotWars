@@ -91,36 +91,36 @@ public class Mano {
         List<Jugada> jugadasDisponibles = new List<Jugada>();
 
         if ((_estadoEnvido == ESTADOENVIDO.NULO || _estadoEnvido == ESTADOENVIDO.ENVIDO) && _envidosCantados < 2 && _turnosJugados < 2 && _estadoTruco == ESTADOTRUCO.NULO) {
-            jugadasDisponibles.Add(new Jugada("canto", "envido", null));
+            jugadasDisponibles.Add(new Jugada("envido", null));
         }
 
         if ((_estadoEnvido == ESTADOENVIDO.NULO || _estadoEnvido == ESTADOENVIDO.ENVIDO) && _turnosJugados < 2 && _estadoTruco == ESTADOTRUCO.NULO) {
-            jugadasDisponibles.Add(new Jugada("canto", "real envido", null));
+            jugadasDisponibles.Add(new Jugada("real envido", null));
         }
 
         if ((_estadoEnvido == ESTADOENVIDO.NULO || _estadoEnvido == ESTADOENVIDO.ENVIDO || _estadoEnvido == ESTADOENVIDO.REAL) && _turnosJugados < 2 && _estadoTruco == ESTADOTRUCO.NULO) {
-            jugadasDisponibles.Add(new Jugada("canto", "falta envido", null));
+            jugadasDisponibles.Add(new Jugada("falta envido", null));
         }
 
         if (_estadoTruco == ESTADOTRUCO.NULO && _estado != ESTADO.NEGOCIANDO_ENVIDO) {
-            jugadasDisponibles.Add(new Jugada("canto", "truco", null));
+            jugadasDisponibles.Add(new Jugada("truco", null));
         }
 
         if (_estadoTruco == ESTADOTRUCO.TRUCO && player.tieneQuieroTruco()) {
-            jugadasDisponibles.Add(new Jugada("canto", "retruco", null));
+            jugadasDisponibles.Add(new Jugada("retruco", null));
         }
 
         if (_estadoTruco == ESTADOTRUCO.RETRUCO && player.tieneQuieroTruco()) {
-            jugadasDisponibles.Add(new Jugada("canto", "vale 4", null));
+            jugadasDisponibles.Add(new Jugada("vale 4", null));
         }
 
         if (_estado == ESTADO.JUGANDO && player.getCartas().Length > 0) {
-            jugadasDisponibles.Add(new Jugada("carta", "carta", null));
+            jugadasDisponibles.Add(new Jugada("carta", null));
         }
 
         if (_estado != ESTADO.JUGANDO) {
-            jugadasDisponibles.Add(new Jugada("decision", "quiero", null));
-            jugadasDisponibles.Add(new Jugada("decision", "no quiero", null));
+            jugadasDisponibles.Add(new Jugada("quiero", null));
+            jugadasDisponibles.Add(new Jugada("no quiero", null));
         }
 
         return jugadasDisponibles.ToArray();

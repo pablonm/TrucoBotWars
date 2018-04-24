@@ -99,12 +99,10 @@ public class Carta {
 
 [System.Serializable]
 public class Jugada {
-    public string tipo;
     public string mensaje;
     public Carta carta;
 
-    public Jugada(string t, string m, Carta c) {
-        this.tipo = t;
+    public Jugada(string m, Carta c) {
         this.mensaje = m;
         this.carta = c;
     }
