@@ -104,6 +104,10 @@ public class Player {
             _truco.realizarJugada(jugada);
         } else {
             // TODO: Hacer algo si la jugada no es válida (se intentó hacer trampa o el bot manqueó).
+            if (jugada.mensaje == "carta")
+                Debug.Log("Jugada invalida: " + jugada.carta.palo + " " + jugada.carta.numero);
+            else
+                Debug.Log("Jugada invalida: " + jugada.mensaje);
         }
 
 
