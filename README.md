@@ -68,12 +68,32 @@ Se envía al bot cada vez que es su turno para realizar una jugada.
     },
     jugadasDisponibles: [ // Las posibles jugadas que puede hacer el bot.
         {
-            mensaje: "carta" // Significa que se puede tirar una carta
+            mensaje: "envido"
             carta: null
         },
         {
-            mensaje: "truco" // Significa que se puede cantar truco
+            mensaje: "real envido"
             carta: null
+        },
+        {
+            mensaje: "falta envido"
+            carta: null
+        },
+        {
+            mensaje: "truco"
+            carta: null
+        },
+        {
+            mensaje: "retruco"
+            carta: null
+        },
+        {
+            mensaje: "vale 4"
+            carta: null
+        },
+        {
+            mensaje: "carta" // Significa que se puede tirar una carta
+            carta: null // Este valor siempre viene en null en las jugadas disponibles
         },
     ]
 }
@@ -97,7 +117,7 @@ Se envía desde el bot hacia el juego para indicar que se realiza una cierta jug
 
 ### Mensaje de resultado de envido
 
-Se envía al bot cada vez que una mano termina.
+Se envía al bot cada vez se resuelve un envido.
 
 ```
 {
