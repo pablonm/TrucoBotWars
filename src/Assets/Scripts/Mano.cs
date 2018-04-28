@@ -221,7 +221,7 @@ public class Mano {
                 _estado = ESTADO.TERMINADA;
                 _player1.sumarPuntos(_puntosTrucoQuerido);
             } else {
-                if (_calcularTurnosGanados(_player2, _player2) >= 2) {
+                if (_calcularTurnosGanados(_player2, _player1) >= 2) {
                     _estado = ESTADO.TERMINADA;
                     _player2.sumarPuntos(_puntosTrucoQuerido);
                 } else {
