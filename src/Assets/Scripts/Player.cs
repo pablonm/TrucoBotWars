@@ -34,9 +34,11 @@ public class Player {
         nombre = n;
         _truco = t;
         _bot = b;
-        _bot.setPlayer(this);
+        if (_bot != null)
+            _bot.setPlayer(this);
         _interfaz = i;
-        _interfaz.asignarNombre(n);
+        if (_interfaz != null)
+            _interfaz.asignarNombre(n);
         _cartas = new List<Carta>();
         _cartasEnMesa = new List<Carta>();
         _puntaje = 0;
@@ -54,21 +56,23 @@ public class Player {
         _cartas.Add(mensaje.cartas[2]);
         _esMano = mensaje.esMano;
         _cartasEnMesa = new List<Carta>();
-        _calcularTantosEnvido();
+        _tantosEnvido = calcularTantosEnvido();
         _tieneQuieroTruco = false;
         _tieneTurno = mensaje.esMano;
         _jugoTurno = false;
         _tienePalabra = mensaje.esMano;
-        _interfaz.iniciarMano(mensaje.cartas);
-        _bot.iniciarMano(mensaje);
+        if (_interfaz != null)
+            _interfaz.iniciarMano(mensaje.cartas);
+        if (_bot != null)
+            _bot.iniciarMano(mensaje);
     }
 
-    private void _calcularTantosEnvido() {
+    public int calcularTantosEnvido() {
         int[] tantos = { 0, 0, 0 };
         tantos[0] = _tantosEntreDosCartas(_cartas[0], _cartas[1]);
         tantos[1] = _tantosEntreDosCartas(_cartas[0], _cartas[2]);
         tantos[2] = _tantosEntreDosCartas(_cartas[1], _cartas[2]);
-        _tantosEnvido = Mathf.Max(tantos);
+        return Mathf.Max(tantos);
     }
 
     private int _tantosEntreDosCartas(Carta c1, Carta c2) {
@@ -81,12 +85,13 @@ public class Player {
 
     public void pedirJugada(MensajePedirJugada mensaje) {
         _jugadasDisponibles = mensaje.jugadasDisponibles;
-        _bot.pedirJugada(mensaje);
+        if (_bot != null)
+            _bot.pedirJugada(mensaje);
     }
 
     public void realizarJugada(Jugada jugada) {
 
-        if (_verificarJugada(jugada)) {
+        if (verificarJugada(jugada)) {
 
             // Si la jugada es una carta, la muevo a la mesa
             if (jugada.mensaje == "carta") {
@@ -100,8 +105,10 @@ public class Player {
                     _cartas.RemoveAt(index);
             }
 
-            _interfaz.realizarJugada(jugada);
-            _truco.realizarJugada(jugada);
+            if (_interfaz != null)
+                _interfaz.realizarJugada(jugada);
+            if (_truco != null)
+                _truco.realizarJugada(jugada);
         } else {
             // TODO: Hacer algo si la jugada no es válida (se intentó hacer trampa o el bot manqueó).
             if (jugada.mensaje == "carta")
@@ -113,7 +120,7 @@ public class Player {
 
     }
 
-    private bool _verificarJugada(Jugada jugada) {
+    public bool verificarJugada(Jugada jugada) {
         bool ret = false;
         for (var i = 0; i < _jugadasDisponibles.Length; i++) {
             if (_jugadasDisponibles[i].mensaje == jugada.mensaje) {
@@ -122,11 +129,11 @@ public class Player {
             }
         }
         if (jugada.mensaje == "carta")
-            ret = ret && _verificarCarta(jugada.carta);
+            ret = ret && verificarCarta(jugada.carta);
         return ret;
     }
 
-    private bool _verificarCarta(Carta carta) {
+    public bool verificarCarta(Carta carta) {
         bool ret = false;
         for (var i = 0; i < _cartas.Count; i++) {
             if (_cartas[i].palo == carta.palo && _cartas[i].numero == carta.numero) {
@@ -139,7 +146,8 @@ public class Player {
 
     public void terminarMano(Player other) {
         MensajeResultadoMano mensaje = new MensajeResultadoMano(_puntaje, other.getPuntos());
-        _bot.terminarMano(mensaje);
+        if (_bot != null)
+            _bot.terminarMano(mensaje);
     }
 
     public Carta getUltimaCartaJugada() {
@@ -150,29 +158,35 @@ public class Player {
 
     public void sumarPuntos(int p) {
         _puntaje += p;
-        _interfaz.sumarPuntos(p);
+        if (_interfaz != null)
+            _interfaz.sumarPuntos(p);
     }
 
     public void reseterPuntaje() {
         _puntaje = 0;
-        _interfaz.resetearPuntos();
+        if (_interfaz != null)
+            _interfaz.resetearPuntos();
     }
 
     public void ganoPartida() {
         _partidasGanadas++;
-        _interfaz.ganoPartida();
+        if (_interfaz != null)
+            _interfaz.ganoPartida();
 
         MensajeResultadoPartida mensaje = new MensajeResultadoPartida(true);
-        _bot.terminarPartida(mensaje);
+        if (_bot != null)
+            _bot.terminarPartida(mensaje);
     }
 
     public void perdioPartida() {
         MensajeResultadoPartida mensaje = new MensajeResultadoPartida(false);
-        _bot.terminarPartida(mensaje);
+        if (_bot != null)
+            _bot.terminarPartida(mensaje);
     }
 
     public void resultadoEnvido(MensajeResultadoEnvido mensaje) {
-        _bot.resultadoEnvido(mensaje);
+        if (_bot != null)
+            _bot.resultadoEnvido(mensaje);
     }
 
     //  -------------------

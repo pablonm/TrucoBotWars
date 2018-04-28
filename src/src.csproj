@@ -302,6 +302,7 @@
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Resultado.cs" />
     <Compile Include="Assets\Scripts\Serializables.cs" />
+    <Compile Include="Assets\Scripts\Tests\PlayerTest.cs" />
     <Compile Include="Assets\Scripts\Truco.cs" />
     <Compile Include="Assets\Scripts\UnityMainThreadDispatcher.cs" />
   </ItemGroup>

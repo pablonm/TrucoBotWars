@@ -90,15 +90,15 @@ public class Mano {
     private Jugada[] _calcularJugadasDisponibles(Player player) {
         List<Jugada> jugadasDisponibles = new List<Jugada>();
 
-        if ((_estadoEnvido == ESTADOENVIDO.NULO || _estadoEnvido == ESTADOENVIDO.ENVIDO) && _envidosCantados < 2 && _turnosJugados < 2 && _estadoTruco == ESTADOTRUCO.NULO) {
+        if ((_estadoEnvido == ESTADOENVIDO.NULO || _estadoEnvido == ESTADOENVIDO.ENVIDO) && _envidosCantados < 2 && _turnosJugados < 2) {
             jugadasDisponibles.Add(new Jugada("envido", null));
         }
 
-        if ((_estadoEnvido == ESTADOENVIDO.NULO || _estadoEnvido == ESTADOENVIDO.ENVIDO) && _turnosJugados < 2 && _estadoTruco == ESTADOTRUCO.NULO) {
+        if ((_estadoEnvido == ESTADOENVIDO.NULO || _estadoEnvido == ESTADOENVIDO.ENVIDO) && _turnosJugados < 2) {
             jugadasDisponibles.Add(new Jugada("real envido", null));
         }
 
-        if ((_estadoEnvido == ESTADOENVIDO.NULO || _estadoEnvido == ESTADOENVIDO.ENVIDO || _estadoEnvido == ESTADOENVIDO.REAL) && _turnosJugados < 2 && _estadoTruco == ESTADOTRUCO.NULO) {
+        if ((_estadoEnvido == ESTADOENVIDO.NULO || _estadoEnvido == ESTADOENVIDO.ENVIDO || _estadoEnvido == ESTADOENVIDO.REAL) && _turnosJugados < 2) {
             jugadasDisponibles.Add(new Jugada("falta envido", null));
         }
 
@@ -183,6 +183,9 @@ public class Mano {
             if (_estado == ESTADO.NEGOCIANDO_ENVIDO) {
                 _estadoEnvido = ESTADOENVIDO.JUGADO;
                 _calcularEnvido();
+            }
+            if (_estado == ESTADO.NEGOCIANDO_TRUCO) {
+                _estadoEnvido = ESTADOENVIDO.JUGADO;
             }
             if (_player1.getPuntos() >= 30 || _player2.getPuntos() >= 30)
                 _estado = ESTADO.TERMINADA;
