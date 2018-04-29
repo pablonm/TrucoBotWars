@@ -34,8 +34,8 @@ public class Mano {
         _player2 = p2;
         _puntosEnvidoQuerido = 0;
         _puntosEnvidoNoQuerido = 0;
-        _puntosTrucoQuerido = 1;
-        _puntosTrucoNoQuerido = 0;
+        _puntosTrucoQuerido = 0;
+        _puntosTrucoNoQuerido = 1;
         _envidosCantados = 0;
         _estado = ESTADO.JUGANDO;
         _estadoTruco = ESTADOTRUCO.NULO;
@@ -118,6 +118,11 @@ public class Mano {
             jugadasDisponibles.Add(new Jugada("carta", null));
         }
 
+        if (_estado == ESTADO.JUGANDO)
+        {
+            jugadasDisponibles.Add(new Jugada("irse al mazo", null));
+        }
+
         if (_estado != ESTADO.JUGANDO) {
             jugadasDisponibles.Add(new Jugada("quiero", null));
             jugadasDisponibles.Add(new Jugada("no quiero", null));
@@ -130,7 +135,10 @@ public class Mano {
         if (jugada.mensaje == "envido") {
             _estado = ESTADO.NEGOCIANDO_ENVIDO;
             _estadoEnvido = ESTADOENVIDO.ENVIDO;
+            //resetea el truco
             _estadoTruco = ESTADOTRUCO.NULO;
+            _player2.setTieneQuieroTruco(false);
+            _player1.setTieneQuieroTruco(false);
             _envidosCantados++;
             _puntosEnvidoQuerido = 2 * _envidosCantados;
             _puntosEnvidoNoQuerido = _envidosCantados;
@@ -164,6 +172,8 @@ public class Mano {
         if (jugada.mensaje == "retruco") {
             _estado = ESTADO.NEGOCIANDO_TRUCO;
             _estadoTruco = ESTADOTRUCO.RETRUCO;
+            //si se quiso el truco en primera mano este ya no esta disponible
+            _estadoEnvido = ESTADOENVIDO.JUGADO;
             _puntosTrucoQuerido = 3;
             _puntosTrucoNoQuerido = 2;
             _player2.setTieneQuieroTruco(_player1.tienePalabra());
@@ -211,6 +221,18 @@ public class Mano {
             }
         }
 
+        if (jugada.mensaje == "irse al mazo")
+        {
+            if (_estado == ESTADO.JUGANDO)
+            {
+                _estado = ESTADO.TERMINADA;
+                if (_player1.tienePalabra())
+                    _player2.sumarPuntos(_puntosTrucoNoQuerido);
+                else
+                    _player1.sumarPuntos(_puntosTrucoNoQuerido);
+            }
+        }
+
         if (jugada.mensaje == "carta") {
             _player1.setJugoTurno(_player1.tieneTurno());
             _player2.setJugoTurno(_player2.tieneTurno());
@@ -221,7 +243,7 @@ public class Mano {
                 _estado = ESTADO.TERMINADA;
                 _player1.sumarPuntos(_puntosTrucoQuerido);
             } else {
-                if (_calcularTurnosGanados(_player2, _player1) >= 2) {
+                if (_calcularTurnosGanados(_player2, _player2) >= 2) {
                     _estado = ESTADO.TERMINADA;
                     _player2.sumarPuntos(_puntosTrucoQuerido);
                 } else {

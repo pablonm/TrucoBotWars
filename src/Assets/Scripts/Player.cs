@@ -106,18 +106,32 @@ public class Player {
             }
 
             if (_interfaz != null)
+            {
                 _interfaz.realizarJugada(jugada);
+                if (jugada.mensaje == "carta")
+                {
+                    _interfaz.agregarAlHistorial(string.Format("{0} {1}", jugada.carta.palo, jugada.carta.numero));
+                }
+                else
+                {
+                    _interfaz.agregarAlHistorial(jugada.mensaje);
+                }
+            }
             if (_truco != null)
                 _truco.realizarJugada(jugada);
         } else {
+            string[] mensajesDisponibles = new string[_jugadasDisponibles.Length];
+            for (int i = 0; i < _jugadasDisponibles.Length; i++)
+            {
+                mensajesDisponibles[i] = _jugadasDisponibles[i].mensaje;
+            }
+            string joinMensajes = string.Join(" ", mensajesDisponibles);
             // TODO: Hacer algo si la jugada no es válida (se intentó hacer trampa o el bot manqueó).
             if (jugada.mensaje == "carta")
-                Debug.Log("Jugada invalida: " + jugada.carta.palo + " " + jugada.carta.numero);
+                _interfaz.agregarAlHistorial(string.Format("{0}: Jugada invalida: {1} {2}; las jugadas disponibles eran: {3}", nombre, jugada.carta.palo, jugada.carta.numero, joinMensajes));
             else
-                Debug.Log("Jugada invalida: " + jugada.mensaje);
+                _interfaz.agregarAlHistorial(string.Format("{0} Jugada invalida: {1}; las jugadas disponibles eran: {2}", nombre, jugada.mensaje, joinMensajes));
         }
-
-
     }
 
     public bool verificarJugada(Jugada jugada) {

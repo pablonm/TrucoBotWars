@@ -37,6 +37,11 @@ public class PlayerTest : MonoBehaviour {
         player.iniciarMano(new MensajeIniciarMano(cartas, true));
         asserts.Add((player.calcularTantosEnvido() == 25));
 
+        // 0 con 3 sotas de distinto palo
+        cartas = new Carta[3] { new Carta("espada", 10), new Carta("basto", 10), new Carta("oro", 10), };
+        player.iniciarMano(new MensajeIniciarMano(cartas, true));
+        asserts.Add((player.calcularTantosEnvido() == 0));
+
         _pasoTest("Player->calcularTantosEnvido", asserts);
     }
 
