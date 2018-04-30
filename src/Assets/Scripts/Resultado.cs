@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Resultado : MonoBehaviour {
@@ -22,7 +23,8 @@ public class Resultado : MonoBehaviour {
     }
 
     public void salir() {
-        Application.Quit();
+        SceneManager.LoadScene("Game", LoadSceneMode.Single);
+        //Application.Quit();
     }
 
 }

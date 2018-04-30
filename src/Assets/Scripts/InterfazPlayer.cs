@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class InterfazPlayer : MonoBehaviour {
     
     public GameObject puntosPartida;
     public GameObject partidasGanadas;
     public Text tituloPuntos;
+    public Text historial;
     
 
     // En vez de setear en null el sprite de una carta vacía, le asigno esto
@@ -115,10 +117,14 @@ public class InterfazPlayer : MonoBehaviour {
                     break;
                 }
             }
+            
+            // Eliminar canto resuelto
+            _canto.text = "";
 
         } else {
             _canto.text = "¡" + jugada.mensaje + "!";
         }
+
     }
 
     public void sumarPuntos(int p) {
@@ -138,5 +144,21 @@ public class InterfazPlayer : MonoBehaviour {
         texto.text = ((int.Parse(texto.text)) + 1).ToString();
     }
 
-
+    public void agregarAlHistorial(string mensaje)
+    {
+        string[] lines = historial.text.Split('\n');
+        for (int i = 0; i < lines.Length - 1; i++)
+        {
+            lines[i] = lines[i + 1];
+        }
+        if (lines.Length > 15)
+        {
+            lines[lines.Length - 1] = string.Format("> {0}: {1}",_nombreJugador.text, mensaje);
+            historial.text = String.Join("\n", lines);
+        }
+        else
+        {
+            historial.text = String.Join("\n", lines) + string.Format("> {0}: {1}\n",_nombreJugador.text, mensaje);
+        }
+    }
 }

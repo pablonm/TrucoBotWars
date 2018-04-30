@@ -128,7 +128,7 @@ public class MensajePedirJugada {
     public string mensaje = "pedirJugada";
     public Carta[] cartasEnMesa;
     public Carta[] cartasEnMesaOponente;
-    public Jugada jugadaAnteriorOponente;
+    public Jugada jugadaAnterior;
     public Jugada[] jugadasDisponibles;
 }
 
