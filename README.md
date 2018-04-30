@@ -59,7 +59,7 @@ Se envía al bot cada vez que es su turno para realizar una jugada.
             numero: 4
         }
     ],
-    jugadaAnteriorOponente: {
+    jugadaAnterior: {
         mensaje: "carta"
         carta: {
             palo: "basto",
@@ -95,6 +95,19 @@ Se envía al bot cada vez que es su turno para realizar una jugada.
             mensaje: "carta" // Significa que se puede tirar una carta
             carta: null // Este valor siempre viene en null en las jugadas disponibles
         },
+        {
+            mensaje: "quiero" //disponible cuando hay un canto en juego
+            carta: null
+        },
+        {
+            mensaje: "no quiero" //disponible cuando hay un canto en juego
+            carta: null
+        },
+        {
+            mensaje: "irse al mazo" //solo disponible si no hay un canto en juego
+            carta: null
+        }
+        
     ]
 }
 

@@ -151,7 +151,7 @@ public class InterfazPlayer : MonoBehaviour {
         {
             lines[i] = lines[i + 1];
         }
-        if (lines.Length > 10)
+        if (lines.Length > 15)
         {
             lines[lines.Length - 1] = string.Format("> {0}: {1}",_nombreJugador.text, mensaje);
             historial.text = String.Join("\n", lines);

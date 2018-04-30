@@ -66,20 +66,21 @@ public class Configuracion : MonoBehaviour {
         string error = "";
         int intparsed;
         if (nombre1.text.Length < 1) error += "Ponele nombre a tu bot(1), insensible!\n";
-        if (ip1.text.Length > 0 && ip1.text.Split('.').Length == 4)
-        {
-            foreach (string s in ip1.text.Split('.'))
+        if (ip1.text != "localhost")
+            if (ip1.text.Length > 0 && ip1.text.Split('.').Length == 4)
             {
-                if (!int.TryParse(s, out intparsed) || intparsed>255 || intparsed < 0)
+                foreach (string s in ip1.text.Split('.'))
                 {
-                    error += "Che, tu ip(1) no tiene pinta de ip\n";
+                    if (!int.TryParse(s, out intparsed) || intparsed>255 || intparsed < 0)
+                    {
+                        error += "Che, tu ip(1) no tiene pinta de ip\n";
+                    }
                 }
             }
-        }
-        else
-        {
-            error += "Che, tu ip(1) no tiene pinta de ip\n";
-        }
+            else
+            {
+                error += "Che, tu ip(1) no tiene pinta de ip\n";
+            }
         if (!int.TryParse(puerto1.text, out intparsed) || intparsed < 1 || intparsed > 9999)
         {
             error += "Pone bien bien el puerto(1)\n";
@@ -87,20 +88,21 @@ public class Configuracion : MonoBehaviour {
 
 
         if (nombre2.text.Length < 1) error += "Ponele nombre a tu bot(2), insensible!\n";
-        if (ip2.text.Length > 0 && ip2.text.Split('.').Length == 4)
-        {
-            foreach (string s in ip2.text.Split('.'))
+        if (ip1.text != "localhost")
+            if (ip2.text.Length > 0 && ip2.text.Split('.').Length == 4)
             {
-                if (!int.TryParse(s, out intparsed) || intparsed > 255 || intparsed < 0)
+                foreach (string s in ip2.text.Split('.'))
                 {
-                    error += "Che, tu ip(2) no tiene pinta de ip\n";
+                    if (!int.TryParse(s, out intparsed) || intparsed > 255 || intparsed < 0)
+                    {
+                        error += "Che, tu ip(2) no tiene pinta de ip\n";
+                    }
                 }
             }
-        }
-        else
-        {
-            error += "Che, tu ip(2) no tiene pinta de ip\n";
-        }
+            else
+            {
+                error += "Che, tu ip(2) no tiene pinta de ip\n";
+            }
         if (!int.TryParse(puerto2.text, out intparsed) || intparsed < 1 || intparsed > 9999)
         {
             error += "Pone bien bien el puerto(2)\n";

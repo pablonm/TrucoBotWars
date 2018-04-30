@@ -79,7 +79,7 @@ public class Mano {
     private void _pedirJugada(Player player, Player oponente, Jugada jugadaAnterior) {
         if ((_estado != ESTADO.JUGANDO && player.tienePalabra()) || (_estado == ESTADO.JUGANDO && player.tieneTurno())) {
             MensajePedirJugada mensaje = new MensajePedirJugada();
-            mensaje.jugadaAnteriorOponente = jugadaAnterior;
+            mensaje.jugadaAnterior = jugadaAnterior;
             mensaje.jugadasDisponibles = _calcularJugadasDisponibles(player);
             mensaje.cartasEnMesa = player.getCartasMesa();
             mensaje.cartasEnMesaOponente = oponente.getCartasMesa();
@@ -308,8 +308,17 @@ public class Mano {
                     }
                 }
             } else {
-                _player1.setTienePalabra(!_player1.tienePalabra());
-                _player2.setTienePalabra(!_player2.tienePalabra());
+                if (jugadaAnterior.mensaje == "quiero" || jugadaAnterior.mensaje == "no quiero")
+                {
+                    _player1.setTienePalabra(_player1.tieneTurno());
+                    _player2.setTienePalabra(_player2.tieneTurno());
+                }
+                else
+                {
+                    _player1.setTienePalabra(!_player1.tienePalabra());
+                    _player2.setTienePalabra(!_player2.tienePalabra());
+                }
+                
             }
             _pedirJugadas(jugadaAnterior);
         }

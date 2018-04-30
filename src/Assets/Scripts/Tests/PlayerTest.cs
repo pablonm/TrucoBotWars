@@ -75,7 +75,7 @@ public class PlayerTest : MonoBehaviour {
         
         // Puede jugar truco
         mensaje = new MensajePedirJugada();
-        mensaje.jugadaAnteriorOponente = null;
+        mensaje.jugadaAnterior = null;
         mensaje.cartasEnMesa = null;
         mensaje.cartasEnMesaOponente = null;
         mensaje.jugadasDisponibles = new Jugada[2] { new Jugada("truco", null), new Jugada("envido", null) };
@@ -84,7 +84,7 @@ public class PlayerTest : MonoBehaviour {
 
         // Puede jugar envido
         mensaje = new MensajePedirJugada();
-        mensaje.jugadaAnteriorOponente = null;
+        mensaje.jugadaAnterior = null;
         mensaje.cartasEnMesa = null;
         mensaje.cartasEnMesaOponente = null;
         mensaje.jugadasDisponibles = new Jugada[2] { new Jugada("truco", null), new Jugada("envido", null) };
@@ -93,7 +93,7 @@ public class PlayerTest : MonoBehaviour {
 
         // No puede jugar carta
         mensaje = new MensajePedirJugada();
-        mensaje.jugadaAnteriorOponente = null;
+        mensaje.jugadaAnterior = null;
         mensaje.cartasEnMesa = null;
         mensaje.cartasEnMesaOponente = null;
         mensaje.jugadasDisponibles = new Jugada[2] { new Jugada("truco", null), new Jugada("envido", null) };
@@ -102,7 +102,7 @@ public class PlayerTest : MonoBehaviour {
 
         // No puede real envido
         mensaje = new MensajePedirJugada();
-        mensaje.jugadaAnteriorOponente = null;
+        mensaje.jugadaAnterior = null;
         mensaje.cartasEnMesa = null;
         mensaje.cartasEnMesaOponente = null;
         mensaje.jugadasDisponibles = new Jugada[2] { new Jugada("truco", null), new Jugada("envido", null) };
