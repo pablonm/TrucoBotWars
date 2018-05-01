@@ -137,10 +137,12 @@ public class MensajeResultadoMano {
     public string mensaje = "resultadoMano";
     public int puntos;
     public int puntosOponente;
+    public Jugada jugadaAnterior;
 
-    public MensajeResultadoMano(int p, int po) {
+    public MensajeResultadoMano(int p, int po, Jugada j) {
         this.puntos = p;
         this.puntosOponente = po;
+        this.jugadaAnterior = j;
     }
 }
 
