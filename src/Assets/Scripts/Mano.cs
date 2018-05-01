@@ -34,7 +34,7 @@ public class Mano {
         _player2 = p2;
         _puntosEnvidoQuerido = 0;
         _puntosEnvidoNoQuerido = 0;
-        _puntosTrucoQuerido = 0;
+        _puntosTrucoQuerido = 1;
         _puntosTrucoNoQuerido = 1;
         _envidosCantados = 0;
         _estado = ESTADO.JUGANDO;
