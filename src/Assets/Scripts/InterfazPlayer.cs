@@ -9,7 +9,7 @@ public class InterfazPlayer : MonoBehaviour {
     public GameObject puntosPartida;
     public GameObject partidasGanadas;
     public Text tituloPuntos;
-    public Text historial;
+    public Historial historial;
     
 
     // En vez de setear en null el sprite de una carta vacía, le asigno esto
@@ -146,19 +146,6 @@ public class InterfazPlayer : MonoBehaviour {
 
     public void agregarAlHistorial(string mensaje)
     {
-        string[] lines = historial.text.Split('\n');
-        for (int i = 0; i < lines.Length - 1; i++)
-        {
-            lines[i] = lines[i + 1];
-        }
-        if (lines.Length > 15)
-        {
-            lines[lines.Length - 1] = string.Format("> {0}: {1}",_nombreJugador.text, mensaje);
-            historial.text = String.Join("\n", lines);
-        }
-        else
-        {
-            historial.text = String.Join("\n", lines) + string.Format("> {0}: {1}\n",_nombreJugador.text, mensaje);
-        }
+        historial.agregarAlHistorial(mensaje, _nombreJugador.text);
     }
 }

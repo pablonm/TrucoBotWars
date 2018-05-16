@@ -147,6 +147,13 @@ Se envía al bot cada vez que una mano termina.
 ```
 {
     mensaje: "resultadoMano",
+    jugadaAnterior: {
+        mensaje: "carta"
+        carta: {            //este campo viene vacio si el mensaje no es "carta"
+            palo: "basto",
+            numero: 4
+        }
+    },
     puntos: 10, // Puntos totales en la partida actual
     puntosOponente: 5, // Puntos totales del oponente en la partida actual
 }

@@ -288,6 +288,7 @@
     <Compile Include="Assets\Scripts\BotConnection.cs" />
     <Compile Include="Assets\Scripts\Configuracion.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Historial.cs" />
     <Compile Include="Assets\Scripts\InterfazPlayer.cs" />
     <Compile Include="Assets\Scripts\Mano.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />

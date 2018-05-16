@@ -1213,7 +1213,7 @@ MonoBehaviour:
   puntosPartida: {fileID: 1996863317}
   partidasGanadas: {fileID: 585598150}
   tituloPuntos: {fileID: 229055393}
-  historial: {fileID: 1290122701}
+  historial: {fileID: 1290122703}
   nullcard: {fileID: 21300000, guid: e2fcd63539b3eb64bbf8a84ba750fa9b, type: 3}
   spritesCartasOro:
   - {fileID: 21300000, guid: 8a459c8dcca9ca04196debbc9e55a55b, type: 3}
@@ -1707,7 +1707,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 5
   m_WholeNumbers: 0
-  m_Value: 1.5
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2897,7 +2897,7 @@ MonoBehaviour:
   puntosPartida: {fileID: 211402912}
   partidasGanadas: {fileID: 1792588765}
   tituloPuntos: {fileID: 1307087186}
-  historial: {fileID: 1290122701}
+  historial: {fileID: 1290122703}
   nullcard: {fileID: 21300000, guid: e2fcd63539b3eb64bbf8a84ba750fa9b, type: 3}
   spritesCartasOro:
   - {fileID: 21300000, guid: 8a459c8dcca9ca04196debbc9e55a55b, type: 3}
@@ -5138,6 +5138,7 @@ GameObject:
   - component: {fileID: 1290122700}
   - component: {fileID: 1290122702}
   - component: {fileID: 1290122701}
+  - component: {fileID: 1290122703}
   m_Layer: 5
   m_Name: Historial
   m_TagString: Untagged
@@ -5195,13 +5196,24 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: dfghgdfghd
+  m_Text: 
 --- !u!222 &1290122702
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1290122699}
+--- !u!114 &1290122703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1290122699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a003c0aebe4e9b147843dcabfe98d833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1297699050
 GameObject:
   m_ObjectHideFlags: 0

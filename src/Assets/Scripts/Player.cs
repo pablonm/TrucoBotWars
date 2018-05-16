@@ -158,8 +158,8 @@ public class Player {
         return ret;
     }
 
-    public void terminarMano(Player other) {
-        MensajeResultadoMano mensaje = new MensajeResultadoMano(_puntaje, other.getPuntos());
+    public void terminarMano(Player other, Jugada j) {
+        MensajeResultadoMano mensaje = new MensajeResultadoMano(_puntaje, other.getPuntos(), j);
         if (_bot != null)
             _bot.terminarMano(mensaje);
     }

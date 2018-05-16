@@ -34,7 +34,7 @@ public class Mano {
         _player2 = p2;
         _puntosEnvidoQuerido = 0;
         _puntosEnvidoNoQuerido = 0;
-        _puntosTrucoQuerido = 0;
+        _puntosTrucoQuerido = 1;
         _puntosTrucoNoQuerido = 1;
         _envidosCantados = 0;
         _estado = ESTADO.JUGANDO;
@@ -284,8 +284,8 @@ public class Mano {
 
     private void _siguienteJugada(Jugada jugadaAnterior) {
         if (_estado == ESTADO.TERMINADA) {
-            _player1.terminarMano(_player2);
-            _player2.terminarMano(_player1);
+            _player1.terminarMano(_player2, jugadaAnterior);
+            _player2.terminarMano(_player1, jugadaAnterior);
             _player1.setEsMano(!_player1.esMano());
             _player2.setEsMano(!_player2.esMano());
             _callback();
